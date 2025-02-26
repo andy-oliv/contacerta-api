@@ -4,6 +4,7 @@ interface CreditCard {
   color: string;
   totalLimit: number;
   currentLimit: number;
+  userId: string;
 }
 
 export default CreditCard;

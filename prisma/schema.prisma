@@ -14,6 +14,8 @@ model User {
   email String @db.VarChar(150) @unique
   profilePictureUrl String? @db.VarChar(250)
   transactions Transaction[]
+  accounts Account[]
+  creditcards Creditcard[]
   createdAt DateTime @default(dbgenerated("CURRENT_TIMESTAMP")) @db.Timestamp(0)
   updatedAt DateTime @updatedAt @db.Timestamp(0)
 }
@@ -48,6 +50,8 @@ model Account {
   color String @db.VarChar(20)
   balance Decimal @db.Decimal(10, 2) 
   transactions Transaction[]
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId String
   createdAt DateTime @default(dbgenerated("CURRENT_TIMESTAMP")) @db.Timestamp(0)
   updatedAt DateTime @updatedAt @db.Timestamp(0)
 }
@@ -60,6 +64,8 @@ model Creditcard {
   totalLimit Decimal @db.Decimal(10, 2)
   currentLimit Decimal @db.Decimal(10, 2)
   transactions Transaction[]
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId String
   createdAt DateTime @default(dbgenerated("CURRENT_TIMESTAMP")) @db.Timestamp(0)
   updatedAt DateTime @updatedAt @db.Timestamp(0)
 }

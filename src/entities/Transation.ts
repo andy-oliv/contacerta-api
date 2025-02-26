@@ -8,6 +8,7 @@ interface Transaction {
   date: Date;
   observations?: string;
   attachmentUrl?: string;
+  userId: string;
   categoryId?: number;
   creditCardId?: number;
   accountId?: number;

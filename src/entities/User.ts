@@ -3,7 +3,7 @@ interface User {
   username: string;
   password: string;
   email: string;
-  profilePictureUrl: string;
+  profilePictureUrl?: string;
 }
 
 export default User;
