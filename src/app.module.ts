@@ -10,6 +10,10 @@ import { join } from 'path';
 import { AccountModule } from './account/account.module';
 import { LoggerModule } from 'nestjs-pino';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { UserGatewayModule } from './user-gateway/user-gateway.module';
+import { JwtModule } from '@nestjs/jwt';
+import { AuthGuard } from './auth/auth.guard';
 
 @Module({
   imports: [
@@ -19,6 +23,9 @@ import { UserModule } from './user/user.module';
     ThrottlerModule.forRoot([{ ttl: 60000, limit: 10 }]),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'src', 'assets'),
+    }),
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
     }),
     LoggerModule.forRoot({
       pinoHttp: {
@@ -48,6 +55,8 @@ import { UserModule } from './user/user.module';
     PrismaModule,
     AccountModule,
     UserModule,
+    AuthModule,
+    UserGatewayModule,
   ],
   controllers: [AppController],
   providers: [

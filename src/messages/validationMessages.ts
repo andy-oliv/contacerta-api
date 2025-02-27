@@ -35,6 +35,34 @@ const VALIDATION_MESSAGES = {
         "The email field must be a valid email following the 'email@mail.com' format.",
     },
   },
+  loginDTO: {
+    email: {
+      isNotEmpty: 'The email field cannot be empty.',
+      isEmail:
+        "The email field must be a valid email following the 'email@mail.com' format.",
+    },
+    password: {
+      isNotEmpty: 'The password field cannot be empty.',
+      isStrongPassword:
+        'The password must have at least 8 characters: 1 lowercase letter, 1 uppercase letter, 1 number, 1 symbol.',
+    },
+  },
+  registerDTO: {
+    username: {
+      isNotEmpty: 'The username field cannot be empty.',
+      isNotString: 'The username must be a string.',
+    },
+    password: {
+      isNotEmpty: 'The password field cannot be empty.',
+      isStrongPassword:
+        'The password must have at least 8 characters: 1 lowercase letter, 1 uppercase letter, 1 number, 1 symbol.',
+    },
+    email: {
+      isNotEmpty: 'The email field cannot be empty.',
+      isEmail:
+        "The email field must be a valid email following the 'email@mail.com' format.",
+    },
+  },
 };
 
 export default VALIDATION_MESSAGES;

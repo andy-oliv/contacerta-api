@@ -3,11 +3,16 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger } from 'nestjs-pino';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  const app = await NestFactory.create(AppModule, {
+    cors: true,
+    bufferLogs: true,
+  });
   app.useLogger(app.get(Logger));
   app.useGlobalPipes(new ValidationPipe());
+  app.use(cookieParser(process.env.COOKIE_SECRET));
 
   const config = new DocumentBuilder()
     .setTitle('ContaCerta API')

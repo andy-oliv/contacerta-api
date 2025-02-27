@@ -13,6 +13,7 @@ model User {
   password String @db.VarChar(255)
   email String @db.VarChar(150) @unique
   profilePictureUrl String? @db.VarChar(250)
+  refreshToken String? @db.VarChar(555)
   transactions Transaction[]
   accounts Account[]
   creditcards Creditcard[]
